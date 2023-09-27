@@ -55,18 +55,12 @@ scheduler.start()
 
 @app.route('/')
 def index():
+    # Join the IP addresses with newline characters
+    ip_addresses_str = '\n'.join(ip_addresses)
     # Render the webpage with the list of IP addresses
     return render_template_string('''
-        <pre style="word-wrap: break-word; white-space: pre-wrap;">
-        {% for ip in ip_addresses %}
-            {% if "/" in ip %}
-                {{ ip }}
-            {% else %}
-                {{ ip }}/32
-            {% endif %}
-        {% endfor %}
-        </pre>
-    ''', ip_addresses=ip_addresses)
+        <pre style="word-wrap: break-word; white-space: pre-wrap;">{{ ip_addresses_str }}</pre>
+    ''', ip_addresses_str=ip_addresses_str)
 
 if __name__ == '__main__':
     
