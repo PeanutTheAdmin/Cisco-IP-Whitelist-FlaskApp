@@ -58,7 +58,11 @@ def index():
     # Render the webpage with the list of IP addresses
     return render_template_string('''
         {% for ip in ip_addresses %}
-            {{ ip }}<br>
+            {% if "/" in ip %}
+                {{ ip }}<br>
+            {% else %}
+                {{ ip }}/32<br>
+            {% endif %}
         {% endfor %}
     ''', ip_addresses=ip_addresses)
 
