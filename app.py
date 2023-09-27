@@ -57,13 +57,15 @@ scheduler.start()
 def index():
     # Render the webpage with the list of IP addresses
     return render_template_string('''
+        <pre style="word-wrap: break-word; white-space: pre-wrap;">
         {% for ip in ip_addresses %}
             {% if "/" in ip %}
-                {{ ip }}<br>
+                {{ ip }}
             {% else %}
-                {{ ip }}/32<br>
+                {{ ip }}/32
             {% endif %}
         {% endfor %}
+        </pre>
     ''', ip_addresses=ip_addresses)
 
 if __name__ == '__main__':
